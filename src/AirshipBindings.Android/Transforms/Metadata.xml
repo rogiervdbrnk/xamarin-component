@@ -4,7 +4,7 @@
   <attr path="/api/package[@name='com.urbanairship.actions']" name="managedName">UrbanAirship.Actions</attr>
   <attr path="/api/package[@name='com.urbanairship.actions.tags']" name="managedName">UrbanAirship.Actions.Tags</attr> 
   <attr path="/api/package[@name='com.urbanairship.amazon']" name="managedName">UrbanAirship.Amazon</attr>
-  <attr path="/api/package[@name='com.urbanairship.analytics']" name="managedName">UrbanAirship.Analytics</attr>
+  <attr path="/api/package[@name='com.urbanairship.analytics']" name="managedName">UrbanAirship.Analytic</attr>
   <attr path="/api/package[@name='com.urbanairship.google']" name="managedName">UrbanAirship.Google</attr>
   <attr path="/api/package[@name='com.urbanairship.json']" name="managedName">UrbanAirship.Json</attr>
   <attr path="/api/package[@name='com.urbanairship.js']" name="managedName">UrbanAirship.Js</attr>
@@ -17,9 +17,12 @@
   <attr path="/api/package[@name='com.urbanairship.richpush']" name="managedName">UrbanAirship.RichPush</attr>
   <attr path="/api/package[@name='com.urbanairship.widget']" name="managedName">UrbanAirship.Widget</attr>
   <attr path="/api/package[@name='com.urbanairship.messagecenter']" name="managedName">UrbanAirship.MessageCenter</attr>
+  <attr path="/api/package[@name='com.urbanairship.util']" name="managedName">UrbanAirship.Util</attr>
+  <attr path="/api/package[@name='com.urbanairship.wallet']" name="managedName">UrbanAirship.Wallet</attr>
+  <attr path="/api/package[@name='com.urbanairship.automation']" name="managedName">UrbanAirship.Automation</attr>
 
   <remove-node path="/api/package[@name='com.urbanairship.http']" />
-  <remove-node path="/api/package[@name='com.urbanairship.util']" />
+  <remove-node path="/api/package[@name='com.urbanairship.job']" />
 
   <!--- Non public parent classes -->
   <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" name="visibility">public</attr>
@@ -31,17 +34,14 @@
 
   <!-- Fix location callback. We provide our own bindings.-->
   <remove-node path="/api/package[@name='com.urbanairship.location']/interface[@name='LocationCallback']" />
-  <remove-node path="/api/package[@name='com.urbanairship']/interface[@name='PendingResult']" />
-
-  <!-- Fix intent service --> 
-  <attr path="/api/package[@name='com.urbanairship']/class[@name='BaseIntentService' and @extends='android.app.IntentService']" name="extends">mono.android.app.IntentService</attr>
-  <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='EventService' and @extends='android.app.IntentService']" name="extends">mono.android.app.IntentService</attr>
-
-  <!-- Fix name conflict with BaseIntentService.Delegate and System.Delegate --> 
-  <attr path="/api/package[@name='com.urbanairship']/class[@name='BaseIntentService.Delegate']" name="managedName">BaseIntentServiceDelegate</attr>
-
+ 
   <!-- Rename MessageCenter class to avoid conflict with the namespace -->
   <attr path="/api/package[@name='com.urbanairship.messagecenter']/class[@name='MessageCenter']" name="managedName">MessageCenterManager</attr>
+
+  <!-- Fix field names have the same name as the class for the templates-->
+  <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='RetailEventTemplate']/field[@name='RETAIL_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
+  <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='AccountEventTemplate']/field[@name='ACCOUNT_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
+  <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='MediaEventTemplate']/field[@name='MEDIA_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
 
 </metadata>
 	

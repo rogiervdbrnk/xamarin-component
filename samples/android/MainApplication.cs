@@ -6,7 +6,7 @@ using System;
 using Android.App;
 using UrbanAirship;
 using UrbanAirship.Push;
-using UrbanAirship.Analytics;
+using UrbanAirship.Analytic;
 
 using Android.Runtime;
 
